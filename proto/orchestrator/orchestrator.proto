@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package orchestrator;
+
+option go_package = "k6mil6.orchestrator.v1;orchestratorv1";
+
+service Orchestrator {
+  rpc GetFreeExpressions(GetFreeExpressionsRequest) returns (GetFreeExpressionsResponse);
+  rpc SendResult(SendResultRequest) returns (SendResultResponse);
+}
+
+message GetFreeExpressionsRequest {
+
+}
+
+message GetFreeExpressionsResponse {
+  int32 subexpressionID = 1;
+  string subexpression = 2;
+  double timeout = 3;
+  int32 workerID = 4;
+}
+
+message SendResultRequest {
+  int32 subexpressionID = 1;
+  double result = 2;
+}
+
+message SendResultResponse {
+  int32 subexpressionID = 1;
+}

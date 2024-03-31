@@ -2,11 +2,12 @@ syntax = "proto3";
 
 package orchestrator;
 
-option go_package = "k6mil6.orchestrator.v1;orchestratorv1";
+option go_package = "k6mil6.distributedcalculator.v1;distributedcalculatorv1";
 
 service Orchestrator {
   rpc GetFreeExpressions(GetFreeExpressionsRequest) returns (GetFreeExpressionsResponse);
   rpc SendResult(SendResultRequest) returns (SendResultResponse);
+  rpc SendHeartbeat(SendHeartbeatRequest) returns (SendHeartbeatResponse);
 }
 
 message GetFreeExpressionsRequest {
@@ -27,4 +28,12 @@ message SendResultRequest {
 
 message SendResultResponse {
   int32 subexpressionID = 1;
+}
+
+message SendHeartbeatRequest {
+  int32 workerID = 1;
+}
+
+message SendHeartbeatResponse {
+  int32 workerID = 1;
 }

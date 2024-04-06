@@ -7,10 +7,11 @@ option go_package = "k6mil6.orchestrator.v1;orchestratorv1";
 service Orchestrator {
   rpc GetFreeExpressions(GetFreeExpressionsRequest) returns (GetFreeExpressionsResponse);
   rpc SendResult(SendResultRequest) returns (SendResultResponse);
+  rpc SendHeartbeat(SendHeartbeatRequest) returns (Empty);
 }
 
 message GetFreeExpressionsRequest {
-
+  int32 workerID = 1;
 }
 
 message GetFreeExpressionsResponse {
@@ -27,4 +28,12 @@ message SendResultRequest {
 
 message SendResultResponse {
   int32 subexpressionID = 1;
+}
+
+message SendHeartbeatRequest {
+  int32 workerID = 1;
+}
+
+message Empty {
+
 }
